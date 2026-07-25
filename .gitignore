@@ -1,4 +1,5 @@
 .codex-ppt-build/
+.worktrees/
 *.inspect.ndjson
 *.pdf
 ~$*.pptx
