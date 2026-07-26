@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+
+<style>
+
+body{
+    background:#ffffff;
+    font-family:
+    "Times New Roman",
+    "Microsoft YaHei",
+    sans-serif;
+}
+
+
+.container{
+    width:850px;
+    margin:30px auto;
+}
+
+
+.title{
+    text-align:center;
+    font-size:22px;
+    font-weight:normal;
+    color:#000;
+    margin-bottom:35px;
+}
+
+
+.row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.box{
+
+    width:170px;
+
+    height:75px;
+
+    border:1.8px solid #000;
+
+    border-radius:5px;
+
+    background:#ffffff;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    text-align:center;
+
+
+    font-size:15px;
+
+    font-weight:normal;
+
+    line-height:1.5;
+
+    color:#000;
+
+}
+
+
+.small{
+
+    font-size:12px;
+
+    font-weight:normal;
+
+}
+
+
+
+.arrow{
+
+    font-size:28px;
+
+    margin:0 12px;
+
+    color:#000;
+
+}
+
+
+
+.down{
+
+    text-align:center;
+
+    font-size:28px;
+
+    margin:12px 0;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="title">
+
+测试用例构造流程
+
+</div>
+
+
+
+<!-- 第一行 -->
+
+<div class="row">
+
+
+<div class="box">
+
+MCP Server
+
+</div>
+
+
+
+<div class="arrow">
+
+→
+
+</div>
+
+
+
+<div class="box">
+
+Data 收集
+
+<br>
+
+<span class="small">
+
+Name / Description / Function
+
+</span>
+
+</div>
+
+
+
+<div class="arrow">
+
+→
+
+</div>
+
+
+
+<div class="box">
+
+选择攻击范式
+
+<br>
+
+<span class="small">
+
+P1 / P2 / P3
+
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="down">
+
+↓
+
+</div>
+
+
+
+<!-- 第二行 -->
+
+<div class="row">
+
+
+<div class="box">
+
+Test Case
+
+</div>
+
+
+
+<div class="arrow">
+
+←
+
+</div>
+
+
+
+<div class="box">
+
+人工验证
+
+<br>
+
+<span class="small">
+
+① 恶意行为可执行
+
+<br>
+
+② 参数不存在问题
+
+</span>
+
+</div>
+
+
+
+<div class="arrow">
+
+←
+
+</div>
+
+
+
+<div class="box">
+
+LLM 辅助生成
+
+<br>
+
+Poisoned Tool Description
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<style>
+
+body{
+    margin:0;
+    background:white;
+    font-family:
+    Arial,
+    "Microsoft YaHei",
+    sans-serif;
+}
+
+
+.page{
+
+    width:1200px;
+    height:850px;
+
+    padding:25px;
+
+    position:relative;
+
+}
+
+
+/* 标题 */
+
+.title{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#1f3b5c;
+
+    margin-bottom:18px;
+margin-left:180px;
+
+}
+
+
+
+/* 主框 */
+
+.attack-panel{
+
+    position:absolute;
+
+    left:30px;
+
+    top:80px;
+
+
+    width:620px;
+
+    height:690px;
+
+
+    border:2px dashed #9aa5b1;
+
+    border-radius:14px;
+
+    padding-top:15px;
+
+}
+
+
+
+/* 节点 */
+
+.node{
+
+    width:500px;
+
+    margin:12px auto;
+
+
+    background:#fff;
+
+
+    border:1.5px solid #7d8996;
+
+    border-radius:10px;
+
+
+    padding:10px;
+
+
+    text-align:center;
+
+}
+
+
+.node-title{
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    color:#263238;
+
+}
+
+
+.desc{
+
+    margin-top:4px;
+
+    font-size:13px;
+
+    color:#666;
+
+}
+
+
+
+/* 攻击入口 */
+
+.attack{
+
+    background:#fdeaea;
+
+    border:2px solid #d9534f;
+
+}
+
+
+.attack .node-title{
+
+    color:#b52b27;
+
+}
+
+
+
+/* 结果 */
+
+.result{
+
+    background:#fff1df;
+
+    border:2px solid #e59a35;
+
+}
+
+
+
+/* 箭头 */
+
+.arrow{
+
+    text-align:center;
+
+    font-size:22px;
+
+    height:10px;
+
+    color:#777;
+
+}
+
+
+
+/* 标签 */
+
+.surface{
+
+    position:absolute;
+
+    right:40px;
+
+    top:215px;
+
+
+    background:#d9534f;
+
+    color:white;
+
+
+    font-size:12px;
+
+    padding:4px 10px;
+
+    border-radius:10px;
+
+}
+
+
+
+/* 防御区域 */
+
+
+.defense{
+
+    position:absolute;
+
+    left:760px;
+
+
+    width:310px;
+
+
+    background:#e9f7f3;
+
+    border:2px solid #2a9d8f;
+
+
+    border-radius:12px;
+
+    padding:15px;
+
+}
+
+
+
+.def-title{
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    color:#126e63;
+
+}
+
+
+.def-desc{
+
+    margin-top:8px;
+
+    font-size:13px;
+
+    line-height:20px;
+
+    color:#444;
+
+}
+
+
+
+/* 三个防御点 */
+
+
+.d1{
+
+    top:150px;
+
+}
+
+
+.d2{
+
+    top:400px;
+
+}
+
+
+.d3{
+
+    top:610px;
+
+}
+
+
+
+/* 连线 */
+
+
+.connector{
+
+    position:absolute;
+
+    width:110px;
+
+    height:2px;
+
+    background:#2a9d8f;
+
+    left:650px;
+
+}
+
+
+
+.c1{
+
+    top:245px;
+
+}
+
+
+.c2{
+
+    top:490px;
+
+}
+
+
+.c3{
+
+    top:700px;
+
+}
+
+
+
+/* 底部说明 */
+
+
+.summary{
+
+    position:absolute;
+
+    left:100px;
+
+    bottom:20px;
+
+
+    width:950px;
+
+
+    text-align:center;
+
+
+    font-size:14px;
+
+    color:#555;
+
+}
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<div class="page">
+
+
+<div class="title">
+
+Tool Poisoning攻击链
+
+</div>
+
+
+
+<div class="attack-panel">
+
+
+<div class="node">
+
+<div class="node-title">
+
+Untrusted MCP Server
+
+</div>
+
+<div class="desc">
+
+不可信第三方工具源
+
+</div>
+
+</div>
+
+
+<div class="arrow">↓</div>
+
+
+<div class="node">
+
+<div class="node-title">
+
+Tool Registration
+
+</div>
+
+<div class="desc">
+
+工具注册 / 元数据加载
+
+</div>
+
+</div>
+
+
+
+<div class="arrow">↓</div>
+
+
+
+<div class="node attack">
+
+<div class="node-title">
+
+Poisoned Tool Description
+
+</div>
+
+<div class="desc">
+
+恶意指令嵌入 Tool Metadata
+
+</div>
+
+
+</div>
+
+
+<div class="arrow">↓</div>
+
+
+
+<div class="node">
+
+<div class="node-title">
+
+LLM Context / Planning
+
+</div>
+
+<div class="desc">
+
+模型将描述纳入上下文并参与决策
+
+</div>
+
+</div>
+
+
+
+<div class="arrow">↓</div>
+
+
+
+<div class="node">
+
+<div class="node-title">
+
+Tool Selection & Parameters
+
+</div>
+
+<div class="desc">
+
+选择合法工具或篡改调用参数
+
+</div>
+
+</div>
+
+
+<div class="arrow">↓</div>
+
+
+
+<div class="node">
+
+<div class="node-title">
+
+Legitimate Tool Execution
+
+</div>
+
+<div class="desc">
+
+通过合法工具完成恶意操作
+
+</div>
+
+</div>
+
+
+
+<div class="arrow">↓</div>
+
+
+
+<div class="node result">
+
+<div class="node-title">
+
+Malicious Outcome
+
+</div>
+
+<div class="desc">
+
+隐蔽越权 / 数据泄露 / 参数篡改
+
+</div>
+
+</div>
+
+
+
+<div class="surface">
+
+Attack Surface
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- 防御点 -->
+
+
+<div class="connector c1"></div>
+
+
+<div class="defense d1">
+
+
+<div class="def-title">
+
+Metadata Sanitization
+
+</div>
+
+
+<div class="def-desc">
+
+• 扫描工具描述中的可疑指令<br>
+
+• 过滤恶意 imperative language<br>
+
+• 降低注册阶段注入风险
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="connector c2"></div>
+
+
+<div class="defense d2">
+
+
+<div class="def-title">
+
+Tool Call Validation
+
+</div>
+
+
+<div class="def-desc">
+
+• 检查调用是否符合用户意图<br>
+
+• 检测参数恶意修改<br>
+
+• 拦截异常 Tool Call
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="connector c3"></div>
+
+
+<div class="defense d3">
+
+
+<div class="def-title">
+
+Sandbox / Runtime Monitoring
+
+</div>
+
+
+<div class="def-desc">
+
+• 隔离不可信 MCP Server<br>
+
+• 高风险调用运行时审计<br>
+
+• 限制权限逃逸
+
+</div>
+
+
+</div>
+
+
+
+<div class="summary">
+
+Tool Poisoning 的核心风险在于：恶意指令在工具注册阶段进入 LLM Context，而非传统用户输入阶段。
+
+</div>
+
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>ASR Bar Chart</title>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    background:white;
+    font-family:
+    "Microsoft YaHei",
+    Arial,
+    sans-serif;
+}
+
+
+/* PPT中部横向区域 */
+.chart-container{
+
+    width:1100px;
+    height:340px;
+
+    margin:0 auto;
+
+    background:white;
+
+}
+
+
+.title{
+
+    height:34px;
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#1f3b5c;
+
+    line-height:34px;
+
+}
+
+
+#chart{
+
+    width:1100px;
+
+    height:300px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="chart-container">
+
+
+<div class="title">
+总体与分攻击范式 ASR（%）
+</div>
+
+
+<div id="chart"></div>
+
+
+</div>
+
+
+
+<script>
+
+
+const chart = echarts.init(
+    document.getElementById("chart")
+);
+
+
+
+const option={
+
+
+animation:false,
+
+
+color:[
+
+    "#234E8A",
+    "#9E3D3D",
+    "#7D8FA6"
+
+],
+
+
+
+grid:{
+
+
+    left:65,
+
+    right:25,
+
+    top:18,
+
+    bottom:65,
+
+
+    containLabel:true
+
+},
+
+
+
+legend:{
+
+
+    bottom:5,
+
+    left:"center",
+
+
+    itemWidth:14,
+
+    itemHeight:10,
+
+
+    icon:"roundRect",
+
+
+    textStyle:{
+
+
+        fontSize:12,
+
+        color:"#3d4d5c"
+
+    }
+
+
+},
+
+
+
+xAxis:{
+
+
+    type:"category",
+
+    data:[
+
+        "Overall",
+        "P1",
+        "P2",
+        "P3"
+
+    ],
+
+
+    axisTick:{
+
+
+        show:false
+
+    },
+
+
+    axisLine:{
+
+
+        lineStyle:{
+
+            color:"#b7c2ce"
+
+        }
+
+    },
+
+
+    axisLabel:{
+
+
+        fontSize:13,
+
+        color:"#334e68"
+
+    }
+
+
+},
+
+
+
+yAxis:{
+
+
+    type:"value",
+
+
+    min:0,
+
+    max:80,
+
+    interval:20,
+
+
+    name:"ASR (%)",
+
+
+    nameLocation:"middle",
+
+
+    nameGap:38,
+
+
+    nameTextStyle:{
+
+
+        fontSize:13,
+
+        color:"#334e68"
+
+    },
+
+
+    axisLabel:{
+
+
+        fontSize:12,
+
+        color:"#5b6b7a"
+
+    },
+
+
+    axisTick:{
+
+
+        show:false
+
+    },
+
+
+    axisLine:{
+
+
+        show:false
+
+    },
+
+
+    splitLine:{
+
+
+        lineStyle:{
+
+
+            color:"#e6ebf2"
+
+        }
+
+    }
+
+},
+
+
+
+
+series:[
+
+
+
+{
+
+name:"MiMo v2.5",
+
+type:"bar",
+
+barWidth:20,
+
+barGap:"15%",
+
+
+data:[6.2,12.5,0.0,15.4],
+
+
+itemStyle:{
+
+
+    borderRadius:[3,3,0,0]
+
+},
+
+
+label:{
+
+
+show:true,
+
+
+position:"top",
+
+
+fontSize:11,
+
+
+color:"#334e68",
+
+
+formatter:function(p){
+
+return Number(p.value).toFixed(1);
+
+}
+
+
+}
+
+
+},
+
+
+
+
+{
+
+
+name:"DeepSeek Chat",
+
+type:"bar",
+
+barWidth:20,
+
+
+data:[28.0,70.0,22.2,7.7],
+
+
+itemStyle:{
+
+
+borderRadius:[3,3,0,0]
+
+
+},
+
+
+label:{
+
+
+show:true,
+
+position:"top",
+
+fontSize:11,
+
+color:"#334e68",
+
+
+formatter:function(p){
+
+return Number(p.value).toFixed(1);
+
+}
+
+}
+
+
+},
+
+
+
+
+
+{
+
+
+name:"Qwen 3.7 Plus",
+
+type:"bar",
+
+
+barWidth:20,
+
+
+data:[8.0,0.0,3.7,23.1],
+
+
+itemStyle:{
+
+
+borderRadius:[3,3,0,0]
+
+},
+
+
+label:{
+
+
+show:true,
+
+position:"top",
+
+fontSize:11,
+
+color:"#334e68",
+
+
+formatter:function(p){
+
+return Number(p.value).toFixed(1);
+
+}
+
+}
+
+
+}
+
+
+
+]
+
+};
+
+
+
+chart.setOption(option);
+
+
+
+window.addEventListener(
+"resize",
+()=>chart.resize()
+);
+
+
+
+</script>
+
+
+</body>
+</html>
